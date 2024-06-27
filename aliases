@@ -1,5 +1,13 @@
-alias ptree='pstree -hpaGU $*'
-alias wptree='watch -c pstree -hpaGU $*'
+if [ "$(uname -s)" = "Darwin" ]; then
+  # just works for PIDs, not usernames
+  alias ptree='pstree -p $*'
+  alias wptree='watch -c pstree -p $*'
+else
+  # works for both PIDs and usernames
+  alias ptree='pstree -hpaGU $*'
+  alias wptree='watch -c pstree -hpaGU $*'
+fi
+alias nix='nix --extra-experimental-features "flakes nix-command"'
 alias nmi='ipmitool -H mgmt.${*} -U root -a chassis power diag'
 alias drophost='sudo iptables -A OUTPUT --dst ${*} -j DROP'
 alias rejecthost='sudo iptables -A OUTPUT --dst ${*} -j REJECT'
