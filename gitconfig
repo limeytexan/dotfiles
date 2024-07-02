@@ -1,6 +1,6 @@
 [user]
 	name = Michael Brantley
-	email = brantley@flox.com
+	email = brantley@flox.dev
 [pull]
 	rebase = true
 [init]
